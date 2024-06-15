@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - include:
+      file: classpath:/db/changelog/changes/users.sql
+  - include:
+      file: classpath:/db/changelog/changes/authorities.sql
+  - include:
+      file: classpath:/db/changelog/changes/user_authorities.sql
+  - include:
+      file: classpath:/db/changelog/changes/talents.sql
+  - include:
+      file: classpath:/db/changelog/changes/companies.sql
+  - include:
+      file: classpath:/db/changelog/changes/professions.sql
+  - include:
+      file: classpath:/db/changelog/changes/projects.sql
+  - include:
+      file: classpath:/db/changelog/changes/project_talents.sql
