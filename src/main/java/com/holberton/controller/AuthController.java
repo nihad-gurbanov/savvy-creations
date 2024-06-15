@@ -1,8 +1,9 @@
 package com.holberton.controller;
 
-import com.holberton.dto.JwtResponse;
-import com.holberton.dto.SignInDTO;
-import com.holberton.dto.TokenRefreshRequest;
+import com.holberton.domain.Talent;
+import com.holberton.dto.*;
+import com.holberton.service.CompanyService;
+import com.holberton.service.TalentService;
 import com.holberton.util.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,8 +20,8 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
-    private final PasswordEncoder passwordEncoder;
-    private final VolunteerService volunteerService;
+    private final TalentService talentService;
+    private final CompanyService companyService;
 
     @PostMapping("/sign-in")
     public JwtResponse signIn(@RequestBody SignInDTO signInDTO) {
@@ -30,8 +31,6 @@ public class AuthController {
                         signInDTO.getPassword()
                 )
         );
-        if (signInDTO.getFcmToken() != null)
-            volunteerService.saveFcmToken(signInDTO.getUsername(), signInDTO.getFcmToken());
         String refreshToken = jwtUtil.generateRefreshTokenFromUsername(signInDTO.getUsername());
         SecurityContextHolder.getContext().setAuthentication(authentication);
         final String token = jwtUtil.generateToken(authentication);
@@ -47,5 +46,15 @@ public class AuthController {
         String token = jwtUtil.generateTokenFromUsername(username);
         requestRefreshToken = jwtUtil.generateRefreshTokenFromUsername(username);
         return new JwtResponse(token, requestRefreshToken);
+    }
+
+    @PostMapping("/talent/sign-up")
+    public TalentDTO signUpTalent(@RequestBody TalentDTO talentDTO) {
+        return talentService.add(talentDTO);
+    }
+
+    @PostMapping("/company/sign-up")
+    public CompanyDTO signUpCompany(@RequestBody CompanyDTO companyDTO) {
+        return companyService.add(companyDTO);
     }
 }

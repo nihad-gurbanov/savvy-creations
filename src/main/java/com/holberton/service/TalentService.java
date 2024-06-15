@@ -49,6 +49,7 @@ public class TalentService extends GenericService<Talent, TalentDTO> {
         user = userRepository.save(user);
         Talent talent = new Talent();
         talent.setUser(user);
+        talent.setUserId(user.getId());
         talent.setProfession(profession);
         talent = dto.toEntity(Optional.of(talent));
         talentRepository.save(talent);

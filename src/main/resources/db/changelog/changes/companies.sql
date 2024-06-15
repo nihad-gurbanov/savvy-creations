@@ -9,6 +9,6 @@ CREATE TABLE `companies`
     `about`        VARCHAR(1000),
     `company_name` VARCHAR(100) NOT NULL,
     `created_at`   DATE NOT NULL,
-    `user_id`      BIGINT NOT NULL,
+    `user_id`      BIGINT,
     FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
 );

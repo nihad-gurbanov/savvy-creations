@@ -50,8 +50,9 @@ public class CompanyService extends GenericService<Company, CompanyDTO> {
         user.setAuthorities(Set.of(authority));
         user = userRepository.save(user);
         Company company = new Company();
-        company.setUser(user);
         company = dto.toEntity(Optional.of(company));
+        company.setUser(user);
+        company.setUserId(user.getId());
         companyRepository.save(company);
         return company.toDto();
     }

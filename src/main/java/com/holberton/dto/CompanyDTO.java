@@ -59,7 +59,7 @@ public class CompanyDTO extends BaseDTO<Company> {
         entity.setSurname(this.surname);
         entity.setPhoneNumber(this.phoneNumber);
         entity.setLocation(this.location);
-        entity.setCompanyType(CompanyType.of(this.companyTypeId));
+        entity.setCompanyType(companyTypeId != null ? CompanyType.of(this.companyTypeId) : null);
         entity.setAbout(this.about);
         entity.setCompanyName(this.companyName);
         return entity;

@@ -47,6 +47,11 @@ public class Project extends BaseEntity<ProjectDTO> {
     @ManyToMany(mappedBy = "projects")
     private List<Talent> talents;
 
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDate.now();
+    }
+
     @Override
     public ProjectDTO toDto() {
         ProjectDTO dto = new ProjectDTO();

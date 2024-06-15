@@ -56,6 +56,11 @@ public class Company extends BaseEntity<CompanyDTO> {
     @ToString.Exclude
     private List<Project> projects;
 
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDate.now();
+    }
+
     @Override
     public CompanyDTO toDto() {
         CompanyDTO dto = new CompanyDTO();
@@ -65,7 +70,7 @@ public class Company extends BaseEntity<CompanyDTO> {
         dto.setSurname(this.surname);
         dto.setPhoneNumber(this.phoneNumber);
         dto.setLocation(this.location);
-        dto.setCompanyTypeId(this.companyType.getId());
+        dto.setCompanyTypeId(companyType != null ? this.companyType.getId() : null);
         dto.setAbout(this.about);
         dto.setCompanyName(this.companyName);
         dto.setCreatedAt(this.createdAt);

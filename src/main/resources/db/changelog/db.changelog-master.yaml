@@ -6,11 +6,11 @@ databaseChangeLog:
   - include:
       file: classpath:/db/changelog/changes/user_authorities.sql
   - include:
+      file: classpath:/db/changelog/changes/professions.sql
+  - include:
       file: classpath:/db/changelog/changes/talents.sql
   - include:
       file: classpath:/db/changelog/changes/companies.sql
-  - include:
-      file: classpath:/db/changelog/changes/professions.sql
   - include:
       file: classpath:/db/changelog/changes/projects.sql
   - include:

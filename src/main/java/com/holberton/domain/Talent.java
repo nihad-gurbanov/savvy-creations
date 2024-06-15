@@ -57,10 +57,16 @@ public class Talent extends BaseEntity<TalentDTO> {
             inverseJoinColumns = {@JoinColumn(name = "project_id", referencedColumnName = "id")})
     private List<Project> projects;
 
+    @PrePersist
+    public void prePersist() {
+        this.createdAt = LocalDate.now();
+    }
+
     @Override
     public TalentDTO toDto() {
         TalentDTO dto = new TalentDTO();
         dto.setId(this.id);
+        dto.setUsername(this.user.getUsername());
         dto.setName(this.name);
         dto.setSurname(this.surname);
         dto.setPhoneNumber(this.phoneNumber);

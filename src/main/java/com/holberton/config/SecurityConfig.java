@@ -36,10 +36,8 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests((authz) -> authz
-                        .antMatchers("/api/v1/auth/sign-in").permitAll()
-                        .antMatchers("/api/v1/location/").hasAnyAuthority("ADMIN")
-                        .antMatchers("/api/v1/location/search").hasAnyAuthority("VOLUNTEER", "ADMIN")
-                        .antMatchers("/api/v1/reservation/**").hasAnyAuthority("VOLUNTEER","ADMIN")
+                        .antMatchers("/api/v1/auth/**").permitAll()
+                        .antMatchers("/api/v1/project/").hasAnyAuthority("ADMIN", "COMPANY")
                         .antMatchers("/api/v1/admin/**").hasAnyAuthority("ADMIN")
                         .anyRequest().permitAll()
                 )

@@ -44,6 +44,7 @@ public class TalentDTO extends BaseDTO<Talent> {
     private String about;
 
     @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long professionId;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
