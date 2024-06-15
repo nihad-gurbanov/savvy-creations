@@ -15,3 +15,5 @@ databaseChangeLog:
       file: classpath:/db/changelog/changes/projects.sql
   - include:
       file: classpath:/db/changelog/changes/project_talents.sql
+  - include:
+      file: classpath:/db/changelog/changes/job_requests.sql

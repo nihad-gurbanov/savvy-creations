@@ -55,4 +55,10 @@ public class TalentService extends GenericService<Talent, TalentDTO> {
         talentRepository.save(talent);
         return talent.toDto();
     }
+
+    public Talent findByUser(User user) {
+        return talentRepository.findByUser(user).orElseThrow(
+                () -> new CustomNotFoundException("Talent not found")
+        );
+    }
 }

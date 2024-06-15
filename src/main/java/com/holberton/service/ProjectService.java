@@ -2,6 +2,7 @@ package com.holberton.service;
 
 import com.holberton.domain.Company;
 import com.holberton.domain.Project;
+import com.holberton.dto.JobRequestDTO;
 import com.holberton.dto.ProjectDTO;
 import com.holberton.exception.CustomNotFoundException;
 import com.holberton.repository.BaseJpaRepository;
@@ -9,7 +10,9 @@ import com.holberton.repository.CompanyRepository;
 import com.holberton.repository.ProjectRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProjectService extends GenericService<Project, ProjectDTO> {
@@ -32,5 +35,23 @@ public class ProjectService extends GenericService<Project, ProjectDTO> {
         project = dto.toEntity(Optional.of(project));
         projectRepository.save(project);
         return project.toDto();
+    }
+
+    public List<ProjectDTO> findProjectsByTalentId(Long talentId) {
+        List<Project> projects = projectRepository.findProjectsByTalentId(talentId);
+        return projects.stream()
+                .map(Project::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProjectDTO> findProjectsByCompanyId(Long companyId) {
+        List<Project> projects = projectRepository.findAllByCompanyId(companyId);
+        return projects.stream()
+                .map(Project::toDto)
+                .collect(Collectors.toList());
+    }
+
+    public void addTalentToProject(JobRequestDTO jobRequestDTO) {
+        projectRepository.addTalentToProject(jobRequestDTO.getTalentId(), jobRequestDTO.getProjectId());
     }
 }

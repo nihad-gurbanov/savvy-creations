@@ -47,6 +47,10 @@ public class Project extends BaseEntity<ProjectDTO> {
     @ManyToMany(mappedBy = "projects")
     private List<Talent> talents;
 
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<JobRequest> jobRequests;
+
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDate.now();

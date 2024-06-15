@@ -57,6 +57,10 @@ public class Talent extends BaseEntity<TalentDTO> {
             inverseJoinColumns = {@JoinColumn(name = "project_id", referencedColumnName = "id")})
     private List<Project> projects;
 
+    @OneToMany(mappedBy = "talent", cascade = CascadeType.ALL)
+    @ToString.Exclude
+    private List<JobRequest> jobRequests;
+
     @PrePersist
     public void prePersist() {
         this.createdAt = LocalDate.now();
