@@ -32,7 +32,7 @@ public class ProjectController extends GenericController<Project, ProjectDTO> {
     }
 
     @PostMapping("/complete/{project-id}")
-    @PreAuthorize("TALENT")
+    @PreAuthorize("hasAnyAuthority('TALENT')")
     public ProjectDTO completeProject(Principal principal, @PathVariable("project-id") Long id) {
         User user = (User) userDetailsService.loadUserByUsername(principal.getName());
         Talent talent = talentService.findByUser(user);

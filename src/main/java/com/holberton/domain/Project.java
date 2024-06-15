@@ -66,6 +66,7 @@ public class Project extends BaseEntity<ProjectDTO> {
         dto.setProjectServiceTypeId(this.projectServiceType.getId());
         dto.setCompanyId(this.company.getId());
         dto.setCompanyDTO(this.company.toDto());
+        dto.setProjectStatus(this.getStatus());
         return dto;
     }
 }

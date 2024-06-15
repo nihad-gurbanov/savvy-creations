@@ -32,8 +32,12 @@ public class JobRequest extends BaseEntity<JobRequestDTO> {
     @Override
     public JobRequestDTO toDto() {
         JobRequestDTO dto = new JobRequestDTO();
+        dto.setId(this.id);
+        dto.setProjectId(this.project.getId());
         dto.setProjectDTO(this.project.toDto());
         dto.setTalentDTO(this.talent.toDto());
+        dto.setTalentId(this.talent.getId());
+        dto.setJobRequestStatus(this.jobRequestStatus);
         return dto;
     }
 }

@@ -38,6 +38,8 @@ public class JobRequestService extends GenericService<JobRequest, JobRequestDTO>
                 () -> new CustomNotFoundException("Project not found")
         );
         JobRequest jobRequest = new JobRequest();
+        jobRequest.setProject(project);
+        jobRequest.setTalent(talent);
         jobRequest.setJobRequestStatus(JobRequestStatus.WAITING);
         jobRequest = jobRequestRepository.save(jobRequest);
         return jobRequest.toDto();

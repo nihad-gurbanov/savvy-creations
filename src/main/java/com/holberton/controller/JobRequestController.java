@@ -24,7 +24,7 @@ public class JobRequestController extends GenericController<JobRequest, JobReque
         this.projectService = projectService;
     }
 
-    @PreAuthorize("TALENT")
+    @PreAuthorize("hasAnyAuthority('TALENT')")
     @PostMapping("accept/{job-request-id}")
     public JobRequestDTO acceptJobRequest(@PathVariable("job-request-id") Long id) {
         JobRequestDTO jobRequestDTO = jobRequestService.findById(id);
@@ -34,7 +34,7 @@ public class JobRequestController extends GenericController<JobRequest, JobReque
         return jobRequestDTO;
     }
 
-    @PreAuthorize("TALENT")
+    @PreAuthorize("hasAnyAuthority('TALENT')")
     @PostMapping("reject/{job-request-id}")
     public JobRequestDTO rejectJobRequest(@PathVariable("job-request-id") Long id) {
         JobRequestDTO jobRequestDTO = jobRequestService.findById(id);

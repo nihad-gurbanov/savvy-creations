@@ -2,6 +2,7 @@ package com.holberton.service;
 
 import com.holberton.domain.Company;
 import com.holberton.domain.Project;
+import com.holberton.domain.enumeration.projectstatus.ProjectStatus;
 import com.holberton.dto.JobRequestDTO;
 import com.holberton.dto.ProjectDTO;
 import com.holberton.exception.CustomNotFoundException;
@@ -53,5 +54,10 @@ public class ProjectService extends GenericService<Project, ProjectDTO> {
 
     public void addTalentToProject(JobRequestDTO jobRequestDTO) {
         projectRepository.addTalentToProject(jobRequestDTO.getTalentId(), jobRequestDTO.getProjectId());
+        Project project = projectRepository.findById(jobRequestDTO.getProjectId()).orElseThrow(
+                ()->new CustomNotFoundException("Project not found")
+        );
+        project.setStatus(ProjectStatus.ONGOING);
+        projectRepository.save(project);
     }
 }

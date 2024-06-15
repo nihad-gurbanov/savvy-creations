@@ -18,17 +18,20 @@ public class JobRequestDTO extends BaseDTO<JobRequest> {
     private Long id;
 
     @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long projectId;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private ProjectDTO projectDTO;
 
     @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private Long talentId;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private TalentDTO talentDTO;
 
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private JobRequestStatus jobRequestStatus;
 
     @Override

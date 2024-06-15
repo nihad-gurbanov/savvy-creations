@@ -40,7 +40,6 @@ public class CompanyDTO extends BaseDTO<Company> {
     @Size(max = 100)
     private String location;
 
-    @Size(max = 100)
     private Integer companyTypeId;
 
     @Size(max = 1000)

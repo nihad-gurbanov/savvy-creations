@@ -28,21 +28,23 @@ public class ProjectDTO extends BaseDTO<Project> {
     @Size(max = 200)
     private String name;
 
-    @Enumerated(EnumType.STRING)
+    @NotNull
     private Integer projectCategoryId;
 
-    @Enumerated(EnumType.STRING)
+    @NotNull
     private Integer projectServiceTypeId;
 
     @NotEmpty
     @Size(max = 1000)
     private String requirements;
 
-    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Long companyId;
 
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private CompanyDTO companyDTO;
+
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
+    private ProjectStatus projectStatus;
 
     @Override
     public Project toEntity(Optional<Project> existingEntity) {
@@ -52,6 +54,6 @@ public class ProjectDTO extends BaseDTO<Project> {
         entity.setProjectCategory(ProjectCategory.of(this.projectCategoryId));
         entity.setProjectServiceType(ProjectServiceType.of(this.projectServiceTypeId));
         entity.setRequirements(this.requirements);
-        return null;
+        return entity;
     }
 }
