@@ -1,0 +1,274 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: #66a4af;
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+  cursor: pointer;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  margin-bottom: 50px;
+}
+
+.section-headings {
+  background-color: #58838a;
+  padding: 10px calc((100% - 80%) / 2);
+  color: #c3d3d9;
+  margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-headings .see-all {
+  height: 30px;
+  padding: 0 50px;
+  border-radius: 20px;
+  border: none;
+  background-color: #6fafb8;
+  color: #c3d3d9;
+  font-weight: bolder;
+}
+
+.logo {
+  color: #0d1a2e;
+  text-decoration: none;
+  font-style: italic;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.search {
+  position: relative;
+}
+
+.fa-magnifying-glass {
+  position: absolute;
+  color: gray;
+  top: 10px;
+  right: 10px;
+}
+
+.form-section {
+  display: flex;
+}
+
+.form-div {
+  background-color: #559aa7;
+  width: 65%;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.form-div h2 {
+  color: #0e2e40;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.projectForm div {
+  display: flex;
+  justify-content: space-between;
+  margin: 14px 0 14px 0;
+}
+
+.projectForm label {
+  color: white;
+  font-weight: 900;
+}
+
+.projectForm input,
+textarea {
+  border: none;
+  outline: none;
+  resize: none;
+  opacity: 0.3;
+  width: 75%;
+  padding: 5px 10px;
+  border-radius: 10px;
+}
+
+.projectForm div:last-child {
+  justify-content: end;
+}
+
+.projectForm div:last-child input {
+  width: calc(75% + 20px);
+  color: #0e2e40;
+  font-weight: bolder;
+}
+
+.img-div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 35%;
+}
+
+.img-div img {
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+}
+
+.img-div p {
+  color: #345463;
+  font-size: 18px;
+  text-align: center;
+}
+
+.img-div span {
+  font-weight: bold;
+}
+
+.solutions-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.solutions-section img {
+  height: 256px;
+}
+
+.solutions-section p {
+  color: #284454;
+  text-align: center;
+  font-weight: bold;
+}
+
+.project-card {
+  padding: 10px 40px 10px 10px;
+  border-radius: 10px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #8bb6be;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.project-card img {
+  height: 120px;
+  border-radius: 50%;
+}
+
+.project-card div {
+  width: calc(80% - 130px);
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+
+.project-card span {
+  display: inline-block;
+  width: 40%;
+}
+
+.project-card button {
+  border: none;
+  border-radius: 10px;
+  padding: 6px 0;
+  width: 20%;
+  background-color: #597883;
+  color: #c3cfd7;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.project-card .p-with-span {
+  color: #324757;
+  font-weight: bold;
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.project-card p {
+  color: #324757;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.talents-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.talent-card {
+  border-radius: 20px;
+  padding: 20px;
+  background-color: #8bb6be;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.talent-card img {
+  height: 120px;
+  border-radius: 50%;
+  margin-bottom: 15px;
+}
+
+.talent-card .name {
+  color: #0c1729;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.talent-card .profession {
+  text-align: left;
+  font-weight: bold;
+  color: #394a59;
+}
+
+.talent-card .success {
+  text-align: left;
+  color: #394a59;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.talent-card button {
+  background-color: #718a93;
+  color: #cad4db;
+  font-weight: bold;
+  border: none;
+  padding: 7px 10px;
+}
+
+.talent-card .left-button {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  margin-right: 10px;
+}
+
+.talent-card .right-button {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    margin: 0 0 50px 0;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+  }
+  .section-headings {
+    padding: 10px 20px;
+  }
+}
