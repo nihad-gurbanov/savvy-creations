@@ -2,6 +2,8 @@ import { Header } from "../components/header";
 import { Fragment, useState } from "react";
 import "./loginSignup.css";
 import { useLocation } from "react-router-dom";
+import { Footer } from "../components/footer";
+import { Link } from "react-router-dom";
 
 export function Signup() {
   const location = useLocation();
@@ -50,7 +52,7 @@ export function Signup() {
               Sign Up as Talent
             </button>
           </div>
-          <img src="./assets/imgs/image.png" alt="" />
+          <img src="./assets/imgs/signup.png" alt="" />
         </div>
         <div className="right-side">
           <form onSubmit={handleSubmit}>
@@ -58,7 +60,10 @@ export function Signup() {
               <input type="text" name="firstname" placeholder="first name" />
               <input type="text" name="lastname" placeholder="last name" />
             </div>
-            <select>
+            <select defaultValue={"profession"}>
+              <option value="profession" hidden>
+                profession
+              </option>
               <option value="developer">Developer</option>
               <option value="cyberspecialist">Cyber Specialist</option>
               <option value="designer">Designer</option>
@@ -78,14 +83,16 @@ export function Signup() {
             <div>
               <input type="checkbox" id="talentterms" />
               <label htmlFor="talentterms">
-                <a href="/terms">terms and conditions</a>
+                <Link to="/terms" state={{ state: "talents" }}>
+                  terms and conditions
+                </Link>
               </label>
             </div>
-            <input className="submit" type="submit" value="login" />
+            <input className="submit" type="submit" value="Sign Up" />
           </form>
         </div>
       </div>
-      <p className="copyright">Made by Holbies with ❤️</p>
+      <Footer isLoginPage={true} />
     </Fragment>
   );
   const company = (
@@ -110,7 +117,7 @@ export function Signup() {
               Sign Up as Talent
             </button>
           </div>
-          <img src="./assets/imgs/image.png" alt="" />
+          <img src="./assets/imgs/signup.png" alt="" />
         </div>
         <div className="right-side">
           <form onSubmit={handleSubmit}>
@@ -118,11 +125,7 @@ export function Signup() {
               <input type="text" name="firstname" placeholder="first name" />
               <input type="text" name="lastname" placeholder="last name" />
             </div>
-            <select>
-              <option value="developer">Developer</option>
-              <option value="cyberspecialist">Cyber Specialist</option>
-              <option value="designer">Designer</option>
-            </select>
+            <input type="text" name="companyname" placeholder="company name" />
             <input
               type="text"
               name="username"
@@ -136,16 +139,18 @@ export function Signup() {
               onChange={(e) => setPassword(e.target.value)}
             />
             <div>
-              <input type="checkbox" id="talentterms" />
-              <label htmlFor="talentterms">
-                <a href="/terms">terms and conditions</a>
+              <input type="checkbox" id="companyterms" />
+              <label htmlFor="companyterms">
+                <Link to="/terms" state={{ state: "company" }}>
+                  terms and conditions
+                </Link>
               </label>
             </div>
-            <input className="submit" type="submit" value="login" />
+            <input className="submit" type="submit" value="Sign up" />
           </form>
         </div>
       </div>
-      <p className="copyright">Made by Holbies with ❤️</p>
+      <Footer isLoginPage={true} />
     </Fragment>
   );
   if (pageState === "company") {

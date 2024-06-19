@@ -61,6 +61,12 @@ option {
   margin-bottom: 20px;
 }
 
+.loginSignup .right-side form a {
+  text-decoration: none;
+  color: #0c1729;
+  font-weight: bold;
+}
+
 .loginSignup .right-side form div {
   display: flex;
   align-items: baseline;
@@ -76,6 +82,16 @@ option {
   color: white;
   width: 150px;
   opacity: 0.8;
+}
+
+.loginSignup .right-side form div a {
+  text-decoration: none;
+  color: #5b868d;
+  margin-left: 5px;
+}
+
+.loginSignup .right-side form div input[type="text"] {
+  width: 40%;
 }
 
 .loginSignup .right-side form hr {

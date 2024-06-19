@@ -2,6 +2,7 @@ import { Header } from "../components/header";
 import { Link } from "react-router-dom";
 import { Fragment, useState } from "react";
 import "./loginSignup.css";
+import { Footer } from "../components/footer";
 
 export function Login() {
   const [username, setUsername] = useState("");
@@ -43,7 +44,7 @@ export function Login() {
               </Link>
             </button>
           </div>
-          <img src="./assets/imgs/image.png" alt="" />
+          <img src="./assets/imgs/login.png" alt="" />
         </div>
         <div className="right-side">
           <form onSubmit={handleSubmit}>
@@ -59,13 +60,13 @@ export function Login() {
               placeholder="password"
               onChange={(e) => setPassword(e.target.value)}
             />
-            <input className="submit" type="submit" value="login" />
+            <input className="submit" type="submit" value="Login" />
             <hr />
-            <a>Lost Password</a>
+            <a href="#">Lost Password</a>
           </form>
         </div>
       </div>
-      <p className="copyright">Made by Holbies with ❤️</p>
+      <Footer isLoginPage={true} />
     </Fragment>
   );
 }

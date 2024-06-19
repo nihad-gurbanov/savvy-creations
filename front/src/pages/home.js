@@ -54,13 +54,13 @@ export function Home() {
           </p>
           <img
             src="./assets/imgs/fun-3d-cartoon-illustration-indian-businessman-removebg-preview.png"
-            alt="Image"
+            alt="Man"
             height="350px"
           />
         </div>
       </section>
       <div className="section-headings">
-        <h1>Some Solutions We Build</h1>
+        <h1>Most Demanded Services</h1>
         <button className="see-all"> See All &gt;&gt;</button>
       </div>
       <section className="solutions-section container">
@@ -82,7 +82,7 @@ export function Home() {
       </section>
       <div className="section-headings">
         <button className="see-all"> See All &gt;&gt;</button>
-        <h1>Open Projects</h1>
+        <h1>Popular Projects</h1>
       </div>
       <section className="projects-section container">
         <div className="project-card">
@@ -190,7 +190,7 @@ export function Home() {
           <button className="right-button">Contact</button>
         </div>
       </section>
-      <Footer />
+      <Footer isLoginPage={false} />
     </React.Fragment>
   );
 }

@@ -2,7 +2,7 @@ import React from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
 
-export function Header({ isLoginPage }) {
+export function Header({ isLoginPage, activePage = "" }) {
   return (
     <React.Fragment>
       <header>
@@ -23,13 +23,28 @@ export function Header({ isLoginPage }) {
               <i className="fa-solid fa-magnifying-glass"></i>
             </li>
             <li>
-              <a href="#">Projects</a>
+              <a
+                className={activePage === "projects" ? "activePage" : ""}
+                href="projects"
+              >
+                Projects
+              </a>
             </li>
             <li>
-              <a href="#">Talents</a>
+              <a
+                className={activePage === "talents" ? "activePage" : ""}
+                href="/talents"
+              >
+                Talents
+              </a>
             </li>
             <li>
-              <a href="#">Services</a>
+              <a
+                className={activePage === "services" ? "activePage" : ""}
+                href="/services"
+              >
+                Services
+              </a>
             </li>
             {!isLoginPage ? (
               <>
