@@ -2,7 +2,7 @@ import React from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
 
-export function Header({ isLoginPage, activePage = "" }) {
+export function Header({ isLoggedIn = false, isLoginPage, activePage = "" }) {
   return (
     <React.Fragment>
       <header>
@@ -46,25 +46,36 @@ export function Header({ isLoginPage, activePage = "" }) {
                 Services
               </a>
             </li>
-            {!isLoginPage ? (
+            {isLoggedIn ? (
               <>
-                <li>
-                  <Link
-                    className="loginsignup"
-                    to="/sign-up"
-                    state={{ state: "talent" }}
-                  >
-                    Sign Up
-                  </Link>
-                </li>
-                <li>
-                  <a className="loginsignup" href="/login">
-                    Login
-                  </a>
+                <li className="profile">
+                  <img src="./assets/imgs/400_400_2.jpg"></img>
+                  <a href="/">Profile</a>
                 </li>
               </>
             ) : (
-              <></>
+              <>
+                {!isLoginPage ? (
+                  <>
+                    <li>
+                      <Link
+                        className="loginsignup"
+                        to="/sign-up"
+                        state={{ state: "talent" }}
+                      >
+                        Sign Up
+                      </Link>
+                    </li>
+                    <li>
+                      <a className="loginsignup" href="/login">
+                        Login
+                      </a>
+                    </li>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </>
             )}
           </ul>
         </nav>
