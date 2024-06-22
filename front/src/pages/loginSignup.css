@@ -4,6 +4,13 @@
   justify-content: space-between;
 }
 
+.error {
+  background-color: red;
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
 .loginSignup .left-side {
   width: 50%;
 }

@@ -3,19 +3,27 @@ import { Link } from "react-router-dom";
 import { Fragment, useState } from "react";
 import "./loginSignup.css";
 import { Footer } from "../components/footer";
+// import { fieldLength } from "../utils/fieldCheck";
+import { baseURL } from "../utils/baseURL";
 
 export function Login() {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  // const [errorState, setErrorState] = useState("");
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const usernameField = document.getElementById("username");
+    const passwordField = document.getElementById("password");
+    // const checkUsername = fieldLength(usernameField, 6, 12);
+    // const checkPassword = fieldLength(passwordField, 6, 12);
+    // if (checkUsername === "" && checkPassword === "") {
+    const username = usernameField.value;
+    const password = passwordField.value;
     const user = {
       username,
       password,
     };
 
-    const response = await fetch("", {
+    const response = await fetch(`${baseURL}/auth/sign-in`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -24,7 +32,16 @@ export function Login() {
     });
 
     const data = await response.json();
+    console.log(data);
+    // setErrorState("");
     // onLoginSuccess(data.token); implement this
+    // } else {
+    //   if (checkUsername !== "") {
+    //     setErrorState(checkUsername);
+    //   } else {
+    //     setErrorState(checkPassword);
+    //   }
+    // }
   };
   return (
     <Fragment>
@@ -48,17 +65,20 @@ export function Login() {
         </div>
         <div className="right-side">
           <form onSubmit={handleSubmit}>
+            {/* {errorState === "" ? <></> : <p className="error">{errorState}</p>} */}
             <input
               type="text"
+              id="username"
               name="username"
               placeholder="username"
-              onChange={(e) => setUsername(e.target.value)}
+              required
             />
             <input
               type="password"
+              id="password"
               name="password"
               placeholder="password"
-              onChange={(e) => setPassword(e.target.value)}
+              required
             />
             <input className="submit" type="submit" value="Login" />
             <hr />
