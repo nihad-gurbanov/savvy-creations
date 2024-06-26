@@ -1,8 +1,10 @@
 import React from "react";
 import "./header.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../utils/AuthContext";
 
-export function Header({ isLoggedIn = false, isLoginPage, activePage = "" }) {
+export function Header({ isLoginPage, activePage = "" }) {
+  const { isAuthenticated } = useAuth();
   return (
     <React.Fragment>
       <header>
@@ -46,11 +48,11 @@ export function Header({ isLoggedIn = false, isLoginPage, activePage = "" }) {
                 Services
               </a>
             </li>
-            {isLoggedIn ? (
+            {isAuthenticated ? (
               <>
                 <li className="profile">
                   <img src="./assets/imgs/400_400_2.jpg"></img>
-                  <a href="/">Profile</a>
+                  <a href="/profile">Profile</a>
                 </li>
               </>
             ) : (

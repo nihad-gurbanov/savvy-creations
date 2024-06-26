@@ -1,13 +1,18 @@
-import { Header } from "../components/header";
-import { Link } from "react-router-dom";
-import { Fragment, useState } from "react";
-import "./loginSignup.css";
-import { Footer } from "../components/footer";
-// import { fieldLength } from "../utils/fieldCheck";
 import { baseURL } from "../utils/baseURL";
+import { Header } from "../components/header";
+import { Link, useNavigate } from "react-router-dom";
+import { Fragment, useState } from "react";
+import { useAuth } from "../utils/AuthContext";
+import { Footer } from "../components/footer";
+import "./loginSignup.css";
+import { getTalents } from "../requests/talentRequests";
+// import { fieldLength } from "../utils/fieldCheck";
 
 export function Login() {
-  // const [errorState, setErrorState] = useState("");
+  const [errorState, setErrorState] = useState("");
+
+  const navigate = useNavigate();
+  const { setIsAuthenticated, setLoginType } = useAuth();
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -30,9 +35,22 @@ export function Login() {
       },
       body: JSON.stringify(user),
     });
-
-    const data = await response.json();
-    console.log(data);
+    if (response.status === 200) {
+      const data = await response.json();
+      const talents = await getTalents();
+      const foundUser = talents.find((talent) => talent.username === username);
+      if (foundUser) {
+        setLoginType("talent");
+      } else {
+        setLoginType("company");
+      }
+      document.cookie = `token=${data.accessToken}; path=/`;
+      document.cookie = `refreshToken=${data.refreshToken}; path=/`;
+      setIsAuthenticated(true);
+      navigate("/");
+    } else {
+      setErrorState("Invalid Credentials.");
+    }
     // setErrorState("");
     // onLoginSuccess(data.token); implement this
     // } else {
@@ -65,7 +83,7 @@ export function Login() {
         </div>
         <div className="right-side">
           <form onSubmit={handleSubmit}>
-            {/* {errorState === "" ? <></> : <p className="error">{errorState}</p>} */}
+            {errorState === "" ? <></> : <p className="error">{errorState}</p>}
             <input
               type="text"
               id="username"

@@ -1,7 +1,7 @@
 import { Header } from "../components/header";
 import { Fragment, useState, useEffect } from "react";
 import "./loginSignup.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Footer } from "../components/footer";
 import { Link } from "react-router-dom";
 import { getProfessions } from "../requests/professionRequests";
@@ -16,6 +16,8 @@ export function Signup() {
   const [surname, setSurname] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     getProfessions().then(
@@ -45,10 +47,26 @@ export function Signup() {
       },
       body: JSON.stringify(user),
     });
+    if (response.status === 200) navigate("/login");
+  };
+  const handleOrganizationSubmit = async (e) => {
+    e.preventDefault();
+    const user = {
+      name,
+      surname,
+      companyName,
+      username,
+      password,
+    };
 
-    const data = await response.json();
-    console.log(data);
-    // onLoginSuccess(data.token); implement this
+    const response = await fetch(`${baseURL}/auth/company/sign-up`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(user),
+    });
+    if (response.status === 200) navigate("/login");
   };
   const talent = (
     <Fragment>
@@ -157,18 +175,20 @@ export function Signup() {
           <img src="./assets/imgs/signup.png" alt="" />
         </div>
         <div className="right-side">
-          <form onSubmit={handleTalentSubmit}>
+          <form onSubmit={handleOrganizationSubmit}>
             <div>
               <input
                 type="text"
                 name="firstname"
                 placeholder="first name"
+                onChange={(e) => setName(e.target.value)}
                 required
               />
               <input
                 type="text"
                 name="lastname"
                 placeholder="last name"
+                onChange={(e) => setSurname(e.target.value)}
                 required
               />
             </div>
@@ -176,6 +196,7 @@ export function Signup() {
               type="text"
               name="companyname"
               placeholder="company name"
+              onChange={(e) => setCompanyName(e.target.value)}
               required
             />
             <input

@@ -1,139 +1,175 @@
 import { Header } from "../components/header";
 import { Footer } from "../components/footer";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./projects_talents.css";
+import {
+  getProjectCategories,
+  getProjectServices,
+} from "../requests/projectRequests";
 
 export function Projects() {
+  const [categories, setCategories] = useState([]);
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    getProjectCategories().then(
+      (data) => {
+        setCategories(data);
+      },
+      (error) => {
+        console.error("Error fetching categories:", error);
+      }
+    );
+    getProjectServices().then(
+      (data) => {
+        setServices(data);
+      },
+      (error) => {
+        console.error("Error fetching services:", error);
+      }
+    );
+  }, []);
   return (
     <React.Fragment>
       <Header isLoginPage={false} activePage={"projects"} />
       <section className="container categorizedProject-section">
         <div className="left-side">
           <h2>Filter By Service</h2>
+          {services.map((service) => (
+            <div className="project">
+              <label className="switch">
+                <input type="checkbox" id="check" />
+                <span className="slider round"></span>
+              </label>
+              <label htmlFor="check" key={service.id} id={service.id}>
+                {service.name}
+              </label>
+            </div>
+          ))}
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check">Full stack web development</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-2" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-2">Frontend development</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-3" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-3">Backend development</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-4" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-4">IOS development</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-5" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-5">Android development</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-6" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-6">Cross mobile development</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-7" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-7">Desktop development</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-8" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-8">UX UI Design</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-9" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-9">Data Science & Machine L...</label>
           </div>
           <h2>Filter By Category</h2>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-10" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-10">E-commerce</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-11" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-11">Education</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-12" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-12">ERP</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-13" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-13">Fintech</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-14" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-14">Customer Relationship Man...</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-15" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-15">Human Resources</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-16" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-16">Project Management</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-17" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-17">Content Management System</label>
           </div>
           <div className="project">
-            <label class="switch">
+            <label className="switch">
               <input type="checkbox" id="check-18" />
-              <span class="slider round"></span>
+              <span className="slider round"></span>
             </label>
             <label htmlFor="check-18">Healthcare</label>
           </div>

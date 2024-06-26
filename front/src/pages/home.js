@@ -1,21 +1,63 @@
 import { Header } from "../components/header";
+import { useAuth } from "../utils/AuthContext";
 import { Footer } from "../components/footer";
-import React from "react";
+import { useState, Fragment } from "react";
+import { baseURL } from "../utils/baseURL";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Home() {
+  const { isAuthenticated, loginType } = useAuth();
+  const navigate = useNavigate();
+  const [errorState, setErrorState] = useState("");
+  const [name, setName] = useState("");
+  const [type, setType] = useState("");
+  const [category, setCategory] = useState("");
+  const [details, setDetails] = useState("");
+  const [success, setSuccess] = useState("");
+
+  const handleProjectSubmit = async (e) => {
+    e.preventDefault();
+    if (!isAuthenticated) {
+      navigate("/login");
+    } else {
+      if (loginType === "talent") {
+        setErrorState("You are not a company.");
+      } else {
+        const user = {
+          name,
+          projectCategoryId: 1,
+          projectServiceTypeId: 1,
+          companyId: 2,
+          requirements: details,
+        };
+
+        await fetch(`${baseURL}/project`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(user),
+        });
+        setSuccess("Project is successfully submitted.");
+      }
+    }
+  };
   return (
-    <React.Fragment>
+    <Fragment>
       <Header isLoginPage={false} />
       <section className="form-section container">
         <div className="form-div">
           <h2>Submit your project details</h2>
-          <form action="#" className="projectForm">
+          <form onSubmit={handleProjectSubmit} className="projectForm">
+            {success === "" ? <></> : <p className="success">{success}</p>}
+            {errorState === "" ? <></> : <p className="error">{errorState}</p>}
             <div>
               <label htmlFor="nameInput">Name</label>
               <input
                 type="text"
                 name="name"
                 id="nameInput"
+                onChange={(e) => setName(e.target.value)}
                 placeholder="Drone store"
               />
             </div>
@@ -25,6 +67,7 @@ export function Home() {
                 type="text"
                 name="type"
                 id="typeInput"
+                onChange={(e) => setType(e.target.value)}
                 placeholder="Website"
               />
             </div>
@@ -34,12 +77,18 @@ export function Home() {
                 type="text"
                 name="category"
                 id="categoryInput"
+                onChange={(e) => setCategory(e.target.value)}
                 placeholder="E-commerce"
               />
             </div>
             <div>
               <label htmlFor="detailsInput">Details</label>
-              <textarea name="details" id="detailsInput" rows="5"></textarea>
+              <textarea
+                name="details"
+                id="detailsInput"
+                rows="5"
+                onChange={(e) => setDetails(e.target.value)}
+              ></textarea>
             </div>
             <div>
               <input type="submit" value="Submit project" />
@@ -191,6 +240,6 @@ export function Home() {
         </div>
       </section>
       <Footer isLoginPage={false} />
-    </React.Fragment>
+    </Fragment>
   );
 }

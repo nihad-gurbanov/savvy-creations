@@ -1,0 +1,23 @@
+.coming-soon {
+  text-align: center;
+  color: white;
+  margin-bottom: 50px;
+}
+
+.logoutButton {
+  display: flex;
+  justify-content: center;
+}
+
+.logoutButton button {
+  color: white;
+  background-color: red;
+  padding: 10px 20px;
+  border-radius: 80px;
+  outline: none;
+  border: none;
+  font-weight: bold;
+}
+
+footer {
+}

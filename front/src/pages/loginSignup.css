@@ -11,6 +11,13 @@
   border-radius: 20px;
 }
 
+.success {
+  background-color: palegreen;
+  margin-bottom: 15px;
+  padding: 5px 10px;
+  border-radius: 20px;
+}
+
 .loginSignup .left-side {
   width: 50%;
 }
