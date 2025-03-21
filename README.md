@@ -54,11 +54,11 @@ To provide a visual overview of the platform, here are some screenshots illustra
 
 3. **Project Details**: Provides in-depth information about a specific project, including objectives and required skills.
 
-   ![Project Details Screenshot](https://github.com/nihad-gurbanov/savvy-creations/blob/main/UX_UI/UIs/project%20details%20signed%20in.png
+   ![Project Details Screenshot](https://github.com/nihad-gurbanov/savvy-creations/blob/main/UX_UI/UIs/project%20details%20signed%20in.png)
 
 4. **Candidate Dashboard**: Allows candidates to manage their applications and view project statuses.
 
-   ![Candidate Dashboard Screenshot](https://github.com/nihad-gurbanov/savvy-creations/blob/main/UX_UI/UIs/developer%20profile%20private.png
+   ![Candidate Dashboard Screenshot](https://github.com/nihad-gurbanov/savvy-creations/blob/main/UX_UI/UIs/developer%20profile%20private.png)
 
 *Note: The above links assume that the images are stored in the `UX_UI` directory of the repository. Please ensure the paths are correct based on your repository structure.*
 
