@@ -46,7 +46,7 @@ To provide a visual overview of the platform, here are some screenshots illustra
 
 1. **Homepage**: Displays the platform's mission and recent projects.
 
-   ![Homepage Screenshot](https://github.com/nihad-gurbanov/savvy-creations/blob/main/UX_UI/Homepage.png)
+   ![Homepage Screenshot](https://github.com/nihad-gurbanov/savvy-creations/blob/main/UX_UI/UIs/index.png)
 
 2. **Project Listing**: Shows available projects with details and required roles.
 
